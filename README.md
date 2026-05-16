@@ -1,12 +1,12 @@
-Spoken Digit Recognition from Noisy Audio
+## Spoken Digit Recognition from Noisy Audio
 
 A high-performing deep learning solution for recognizing spoken digits (0-9) from short audio clips.
 
 Kaggle Private Score: 0.99509
 
-⸻
+---------------------------------------
 
-Overview
+### Overview
 
 This project was developed for a Kaggle competition where the objective is to classify spoken digits from 1-second .wav audio recordings.
 
@@ -25,9 +25,9 @@ To achieve strong performance, this solution combines:
 * Test-Time Augmentation (TTA)
 * Weighted ensemble averaging
 
-⸻
+-------------------------------------------
 
-Final Result
+### Final Result
 
 Metric	Score
 Private Leaderboard Score	0.99509
@@ -35,9 +35,9 @@ Number of Classes	10
 Audio Duration	1 second
 Sample Rate	16 kHz
 
-⸻
+--------------------------------
 
-Dataset Structure
+### Dataset Structure
 
 train_audio/{id}.wav
 train.csv
@@ -55,9 +55,9 @@ test.csv
 Column	Description
 id	Audio file identifier
 
-⸻
+------------------------------------------------
 
-Project Structure
+### Project Structure
 
 .
 ├── notebook.ipynb
@@ -71,9 +71,9 @@ Project Structure
 ├── submission.csv
 └── README.md
 
-⸻
+--------------------------------------------
 
-Approach Summary
+### Approach Summary
 
 1. Audio Preprocessing
 
@@ -85,9 +85,9 @@ Each audio clip is:
 * Converted into Mel-spectrograms
 * Transformed to decibel scale
 
-⸻
+---------------------------------------
 
-Feature Extraction
+### Feature Extraction
 
 Three Mel-spectrogram resolutions are used:
 
@@ -100,9 +100,9 @@ Each resolution captures complementary information:
 * Lower resolutions provide compact and robust representations
 * Higher resolutions capture finer spectral details
 
-⸻
+-------------------------------------
 
-Model Architecture
+### Model Architecture
 
 A custom CNN is trained separately for each Mel resolution.
 
@@ -133,9 +133,9 @@ Key Design Choices
 * Dropout (0.5) increases generalization
 * Adam optimizer with learning rate scheduling
 
-⸻
+------------------------------------------------------------------
 
-Training Strategy
+### Training Strategy
 
 Each of the three models is trained independently.
 
@@ -154,9 +154,9 @@ Callbacks
 * ModelCheckpoint — saves the best model by validation accuracy
 * ReduceLROnPlateau — lowers learning rate when validation loss stalls
 
-⸻
+-------------------------------------------
 
-Test-Time Augmentation (TTA)
+### Test-Time Augmentation (TTA)
 
 During inference, each test spectrogram is perturbed multiple times by adding small Gaussian noise.
 
@@ -171,9 +171,9 @@ Benefit
 
 TTA improves robustness against noise and slight distortions in the test data.
 
-⸻
+------------------------------------------------------------------
 
-Ensemble Strategy
+### Ensemble Strategy
 
 Predictions from the three models are combined using weighted averaging.
 
@@ -188,7 +188,7 @@ Final = 0.3 × Pred64 + 0.4 × Pred80 + 0.3 × Pred128
 
 The digit with the highest probability is selected.
 
-⸻
+----------------------------------------------
 
 Why This Works So Well
 
@@ -200,9 +200,9 @@ This solution performs strongly because it combines several complementary techni
 4. Weighted ensembling leverages strengths of each model.
 5. Learning rate scheduling improves convergence.
 
-⸻
+----------------------------------------
 
-Installation
+### Installation
 
 Clone Repository
 
@@ -222,48 +222,9 @@ tqdm
 tensorflow
 scikit-learn
 
-⸻
+-----------------------------------
 
-Usage
-
-Train Models
-
-Open and run the notebook:
-
-jupyter notebook notebook.ipynb
-
-Generate Submission
-
-Running the full notebook will produce:
-
-submission.csv
-
-⸻
-
-Submission Format
-
-id,label
-00001,7
-00002,3
-00003,0
-
-Note: Ensure the submission column is named label to match competition requirements.
-
-⸻
-
-Performance Tips
-
-If you want to improve the score further, consider:
-
-* K-fold cross-validation
-* Mixup or SpecAugment
-* 1D audio models
-* Pretrained models (e.g., YAMNet, PANNs)
-* Snapshot ensembling
-
-⸻
-
-Memory Requirements
+### Memory Requirements
 
 Since the dataset is large (~3.3 GB), loading all spectrograms into memory can require significant RAM.
 
@@ -272,9 +233,9 @@ Recommended:
 * 16 GB RAM or more for local training
 * Kaggle GPU notebooks for faster execution
 
-⸻
+---------------------------
 
-Reproducibility
+### Reproducibility
 
 For fully reproducible results, set random seeds for:
 
@@ -282,21 +243,9 @@ For fully reproducible results, set random seeds for:
 * TensorFlow
 * Python
 
-⸻
+----------------------------------------------
 
-Future Improvements
-
-Potential enhancements include:
-
-* Speaker normalization
-* SpecAugment
-* Attention-based architectures
-* EfficientNet over spectrograms
-* Probability calibration
-
-⸻
-
-Key Learnings
+### Key Learnings
 
 This project demonstrates that a relatively simple CNN can achieve near-perfect accuracy when combined with:
 
@@ -305,9 +254,8 @@ This project demonstrates that a relatively simple CNN can achieve near-perfect 
 * Test-time augmentation
 * Weighted ensembling
 
-⸻
-
-Acknowledgements
+-----------------------------
+### Acknowledgements
 
 * Competition organizers for the dataset
 * urlLibrosahttps://librosa.org for audio processing
@@ -316,14 +264,10 @@ Acknowledgements
 
 ⸻
 
-Author
+## Author
 
-Your Name
+## Samarita Pogula
 
 If you found this repository helpful, consider starring the project.
 
-⸻
 
-License
-
-This project is released under the MIT License.
