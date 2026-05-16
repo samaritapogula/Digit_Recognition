@@ -206,8 +206,8 @@ Installation
 
 Clone Repository
 
-git clone https://github.com/yourusername/spoken-digit-recognition.git
-cd spoken-digit-recognition
+git clone https://github.com/yourusername/Digit_Recognition.git
+cd Digit_Recognition
 
 Install Dependencies
 
